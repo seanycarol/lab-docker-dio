@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo à Página</h1>
+    <p id="infoDataHora">
+        <h1>Data e Hora Atual</h1>
+        <div id="dataHora"></div>
+    </p>
+    <button onclick="mostrarDataHora()">Clique aqui para ver a data e hora atualizada</button>
+
+    <script>
+        function mostrarDataHora() {
+            pegaDataHora();
+        }
+
+        function pegaDataHora() {
+            const agora = new Date();
+            const opcoesData = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
+            const horas = String(agora.getHours()).padStart(2, '0');
+            const minutos = String(agora.getMinutes()).padStart(2, '0');
+            const segundos = String(agora.getSeconds()).padStart(2, '0');
+            const horaFormatada = `${horas}:${minutos}:${segundos}`;
+            document.getElementById('dataHora').innerText = `${dataFormatada} ${horaFormatada}`;
+        }
+    </script>
+</body>
+</html>
